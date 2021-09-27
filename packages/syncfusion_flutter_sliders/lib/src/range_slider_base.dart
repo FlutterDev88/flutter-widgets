@@ -706,24 +706,24 @@ abstract class RenderBaseRangeSlider extends RenderBaseSlider
     thumbIcon = isStartThumbActive ? _startThumbIcon : _endThumbIcon;
 
     // Drawing overlay.
-    overlayShape.paint(
-      context,
-      thumbCenter,
-      parentBox: this,
-      themeData: sliderThemeData,
-      currentValues: _values,
-      animation:
-          isStartThumbActive ? _overlayStartAnimation : _overlayEndAnimation,
-      thumb: activeThumb,
-      paint: null,
-    );
-    showOverlappingThumbStroke = (getFactorFromValue(actualValues.start) -
-                    getFactorFromValue(actualValues.end))
-                .abs() *
-            (sliderType == SliderType.vertical
-                ? actualTrackRect.height
-                : actualTrackRect.width) <
-        actualThumbSize.width;
+    // overlayShape.paint(
+    //   context,
+    //   thumbCenter,
+    //   parentBox: this,
+    //   themeData: sliderThemeData,
+    //   currentValues: _values,
+    //   animation:
+    //       isStartThumbActive ? _overlayStartAnimation : _overlayEndAnimation,
+    //   thumb: activeThumb,
+    //   paint: null,
+    // );
+    // showOverlappingThumbStroke = (getFactorFromValue(actualValues.start) -
+    //                 getFactorFromValue(actualValues.end))
+    //             .abs() *
+    //         (sliderType == SliderType.vertical
+    //             ? actualTrackRect.height
+    //             : actualTrackRect.width) <
+    //     actualThumbSize.width;
 
     // Drawing thumb.
     thumbShape.paint(context, thumbCenter,
@@ -744,9 +744,10 @@ abstract class RenderBaseRangeSlider extends RenderBaseSlider
       Offset offset,
       Offset actualTrackOffset,
       Rect trackRect) {
-    if (willDrawTooltip) {
+    // if (willDrawTooltip) {
       final Paint paint = Paint()
-        ..color = sliderThemeData.tooltipBackgroundColor!
+        // ..color = sliderThemeData.tooltipBackgroundColor!
+        ..color = Colors.transparent
         ..style = PaintingStyle.fill
         ..strokeWidth = 0;
 
@@ -806,27 +807,27 @@ abstract class RenderBaseRangeSlider extends RenderBaseSlider
       textPainter.layout();
 
       Rect? topTooltipRect;
-      if (tooltipShape is SfPaddleTooltipShape) {
-        topTooltipRect = getPaddleTooltipRect(
-            textPainter,
-            Offset(actualTrackOffset.dx, tooltipStartY),
-            thumbCenter,
-            trackRect,
-            sliderThemeData);
-      } else if (tooltipShape is SfRectangularTooltipShape) {
-        topTooltipRect = getRectangularTooltipRect(
-            textPainter,
-            Offset(actualTrackOffset.dx, tooltipStartY),
-            thumbCenter,
-            trackRect,
-            sliderThemeData);
-      }
-      if (bottomTooltipRect != null && topTooltipRect != null) {
-        final Rect overlapRect = topTooltipRect.intersect(bottomTooltipRect);
-        showOverlappingTooltipStroke = sliderType == SliderType.vertical
-            ? overlapRect.top < overlapRect.bottom
-            : overlapRect.right > overlapRect.left;
-      }
+      // if (tooltipShape is SfPaddleTooltipShape) {
+      //   topTooltipRect = getPaddleTooltipRect(
+      //       textPainter,
+      //       Offset(actualTrackOffset.dx, tooltipStartY),
+      //       thumbCenter,
+      //       trackRect,
+      //       sliderThemeData);
+      // } else if (tooltipShape is SfRectangularTooltipShape) {
+      //   topTooltipRect = getRectangularTooltipRect(
+      //       textPainter,
+      //       Offset(actualTrackOffset.dx, tooltipStartY),
+      //       thumbCenter,
+      //       trackRect,
+      //       sliderThemeData);
+      // }
+      // if (bottomTooltipRect != null && topTooltipRect != null) {
+      //   final Rect overlapRect = topTooltipRect.intersect(bottomTooltipRect);
+      //   showOverlappingTooltipStroke = sliderType == SliderType.vertical
+      //       ? overlapRect.top < overlapRect.bottom
+      //       : overlapRect.right > overlapRect.left;
+      // }
 
       tooltipShape.paint(context, thumbCenter,
           Offset(actualTrackOffset.dx, tooltipStartY), textPainter,
@@ -837,7 +838,7 @@ abstract class RenderBaseRangeSlider extends RenderBaseSlider
               ? _tooltipStartAnimation
               : _tooltipEndAnimation,
           trackRect: trackRect);
-    }
+    // }
   }
 
   /// This method used to update interval selection value and

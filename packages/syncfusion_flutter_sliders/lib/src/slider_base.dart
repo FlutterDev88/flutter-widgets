@@ -537,7 +537,7 @@ class RenderBaseSlider extends RenderProxyBox
   double get tooltipStartY => (sliderType == SliderType.vertical)
       ? math.max(actualThumbSize.width, actualTrackRect.width) / 2 + 10
       : _tooltipShape is SfPaddleTooltipShape
-          ? math.max(actualThumbSize.height, actualTrackRect.height) / 2
+          ? math.max(actualThumbSize.height - 100, actualTrackRect.height - 100) / 10
           : math.max(actualThumbSize.height, actualTrackRect.height) / 2 + 10;
 
   double get adjustmentUnit => (actualMax - actualMin) / 10;

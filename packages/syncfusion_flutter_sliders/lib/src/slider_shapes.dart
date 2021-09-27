@@ -810,7 +810,7 @@ class SfPaddleTooltipShape extends SfTooltipShape {
 
     context.canvas.save();
     context.canvas.translate(thumbCenter.dx, thumbCenter.dy);
-    context.canvas.scale(animation.value);
+    //context.canvas.scale(animation.value);
     final Paint strokePaint = Paint();
     // ignore: avoid_as
     if (_isTooltipOverlapStroke(parentBox as RenderBaseSlider) &&
